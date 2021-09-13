@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  railway: MyString
+  name: MyString
+  walk: 1
+  property: one
+
+two:
+  railway: MyString
+  name: MyString
+  walk: 1
+  property: two

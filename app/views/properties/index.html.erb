@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Property List</h1>
-
-<table>
+<%= link_to 'New Property', new_property_path %><br>
+<table><br>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Property</th>
       <th>Rent</th>
       <th>Address</th>
       <th>Building age</th>
@@ -19,8 +19,8 @@
       <tr>
         <td><%= property.name %></td>
         <td><%= property.rent %></td>
-        <td><%= property.age %></td>
         <td><%= property.address %></td>
+        <td><%= property.age %></td>
         <td><%= property.remark %></td>
         <td><%= link_to 'Show', property %></td>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
@@ -29,7 +29,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Property', new_property_path %>
