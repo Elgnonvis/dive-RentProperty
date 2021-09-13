@@ -13,47 +13,43 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     @property = Property.new
+    2.times do
+      @property.stations.build
+    end
   end
 
   # GET /properties/1/edit
   def edit
+    @station = Station.new
+    @stations = @property.stations
   end
 
   # POST /properties or /properties.json
   def create
     @property = Property.new(property_params)
 
-    respond_to do |format|
+    
       if @property.save
-        format.html { redirect_to @property, notice: "Property was successfully created." }
-        format.json { render :show, status: :created, location: @property }
+        redirect_to @property, notice: "Property was successfully created."
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /properties/1 or /properties/1.json
   def update
-    respond_to do |format|
+   
       if @property.update(property_params)
-        format.html { redirect_to @property, notice: "Property was successfully updated." }
-        format.json { render :show, status: :ok, location: @property }
+        redirect_to @property, notice: "Property was successfully updated."
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   # DELETE /properties/1 or /properties/1.json
   def destroy
     @property.destroy
-    respond_to do |format|
-      format.html { redirect_to properties_url, notice: "Property was successfully destroyed." }
-      format.json { head :no_content }
-    end
+      redirect_to properties_url, notice: "Property was successfully destroyed."
   end
 
   private

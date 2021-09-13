@@ -14,7 +14,6 @@
   <%= @property.address %>
 </p>
 
-
 <p>
   <strong>Building age:</strong>
   <%= @property.age %>
@@ -24,6 +23,12 @@
   <strong>Remarks:</strong>
   <%= @property.remark %>
 </p>
+
+<% if @property.stations.any? %>
+<hr />
+  <h1>Nearest station</h1>
+ <%= render @property.stations %>
+<% end %>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
