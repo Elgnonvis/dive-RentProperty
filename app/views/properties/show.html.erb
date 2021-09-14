@@ -23,11 +23,22 @@
   <strong>Remarks:</strong>
   <%= @property.remark %>
 </p>
-
-<% if @property.stations.any? %>
 <hr />
-  <h1>Nearest station</h1>
- <%= render @property.stations %>
+<% i = 0 %>
+<% @stations.each do |st| %>
+  <h1>Nearest station<%= i=i+1 %> </h1>
+  <p>
+  <strong>Name of railway:</strong>
+    <%= st.railway %>
+  </p>
+  <p>
+  <strong>Station name:</strong>
+    <%= st.name %>
+  </p>
+  <p>
+  <strong>How many minutes walk:</strong>
+    <%= st.walk %>
+  </p>
 <% end %>
 
 <%= link_to 'Edit', edit_property_path(@property) %> |

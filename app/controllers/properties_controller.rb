@@ -8,6 +8,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
+    @stations = @property.stations
   end
 
   # GET /properties/new
@@ -20,15 +21,13 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
-    @station = Station.new
-    @stations = @property.stations
+    # @station = Station.new
+    @stations = @property.stations.build
   end
 
   # POST /properties or /properties.json
   def create
     @property = Property.new(property_params)
-
-    
       if @property.save
         redirect_to @property, notice: "Property was successfully created."
       else
